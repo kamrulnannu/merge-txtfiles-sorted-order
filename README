@@ -25,10 +25,7 @@ OUTPUT:
    the machine does not have enough RAM to keep data of all input files in memory.
 
 HOW TO BUILD THE PROJECT
- - The project is build in cygwin in windo 10 professional
- - make clean
- - make
- - merge_files.exe file will be created.
+ - Please see build_instruction.txt
 
 TEST
  - Command line: ./merge_files InputDir OutFile [num_line_read_per_input_file]
