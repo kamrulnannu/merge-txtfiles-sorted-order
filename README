@@ -1,0 +1,51 @@
+This is known as external merge sort.
+
+PROJECT:
+   Merge mulitple text files in sorted order by considering the fact that
+   main memeory (RAM) is enough to keep large text files in the memory.
+INPUT:
+   There are multiple text files. Assume that these files are lexicographically
+   sorted.
+
+OUTPUT:
+ - Merge all lines from input files and write them in outfile in
+   lexicographically sorted order.
+ - Input files may or may not have empty/blank lines, but
+   OutFile should have no empty/blank lines
+ - Same line(s) may exists in one or more InputFiles, but OutFile
+   should not have duplicate lines. Note: if text of two or more lines
+   are look same by human eye, but diff command shows difference, these lines
+   will not be considered as duplicate. example: "abc is ABC" is not same
+   as " abc is ABC   " - note space.
+ - Exception: Line "ABC is abc" and "abc is ABC" will be considered
+   duplicate because no trail or begining space.
+ - It is assumed that each input file is sorted lexicographically.
+   If it is not sorted, the program should complain and exit gracefully.
+ - The code should handle the case when input files are very large and 
+   the machine does not have enough RAM to keep data of all input files in memory.
+
+HOW TO BUILD THE PROJECT
+ - The project is build in cygwin in windo 10 professional
+ - make clean
+ - make
+ - merge_files.exe file will be created.
+
+TEST
+ - Command line: ./merge_files InputDir OutFile [num_line_read_per_input_file]
+     (a) merge_files: executable
+     (b) InputDir: input files will be in this directory
+     (c) OutFile: The program will merge all text files
+                  and write in sorted order in this file.
+                  Outfile will be created in current directory.
+     (d) num_line_read_per_input_file: This is an optional command line
+         argument. Default value is 5. User provided value should be greater
+         than 2 or more. Due to memory concern, the program
+         will read user given lines from each input file. When these lines
+         in memory are written in out file, it will read next batch from
+         input files and continue until processed all input files.
+         Example:
+           - There are 5 input files
+           - user provided value = 6 for num_line_read_per_input_file
+           - Asuume max length of each line 80 characters
+           - So at any time, the code will allocate at most 5 * 6 * 80 = 2400
+             bytes.

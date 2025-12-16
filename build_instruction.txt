@@ -1,0 +1,75 @@
+The project files structure:
+
+merge_txt_files/
+├── build/
+│   ├── bin/
+│   │     └── merge_txt_files.exe   ← final compiled executable
+│   ├── lib/                         ← for static/shared libraries
+│   ├── gcc/                         ← GCC build directory
+│   │   ├── CMakeCache.txt
+│   │   ├── compile_commands.json    ← generated automatically by CMake
+│   │   ├── Makefile
+│   │   └── ...
+│   ├── clang/
+│   │   ├── CMakeCache.txt
+│   │   ├── compile_commands.json
+│   │   └── ...
+│   └── msvc/
+│       ├── ProducerConsumer.sln
+│       └── ...
+│
+├── include/
+│   ├── InputFile.h
+│   └── MergeSortedFile.h
+│
+├── src/
+│   ├── InputFile.cpp
+│   ├── MergeSortedFile.cpp
+│   └── merge_file.cpp
+│
+├── CMakeLists.txt
+├── CMakePresets.json
+└── compile_commands.json            ← symlink to build/<preset>/compile_commands.json for IDEs (clangd, VSCode)
+
+1. cd to project root directory. Execute following shell commands:
+    $ rm -rf build
+    $ mkdir build
+
+2. If plan to use CMakePresets.json for compiler, build-dir or other selections
+
+   (a) For clang compiler run the following command from project root
+       directory:
+        $ cmake --preset clang or cmake --build --preset clang
+        $ cd build/clang
+        $ make -j2      
+
+   (b) For GNU compiler run the following command from project root
+       directory:
+        $ cmake --preset gcc or cmake --build --preset gcc
+        $ cd build/gcc
+        $ make -j2
+
+3. If plan **NOT** to use CMakePresets.json file for compiler selection
+
+   (a) For clang compiler run the following command from project root
+       directory:
+        $ cd build
+        $ cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ ..
+        $ make -j2
+
+    
+   (b) For GNU compiler run the following command from project root
+       directory:
+        $ cd build
+        $ cmake -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ ..
+        $ make -j2
+ 
+
+NOTE: To validate any json file use:
+
+    $ python3 -m json.tool any_file.json"
+
+TEST: 
+    To run test from project root directory, execute the following command:
+
+    $ ./bin/merge_txt_files input_dir out.dat 
