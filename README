@@ -28,8 +28,8 @@ HOW TO BUILD THE PROJECT
  - Please see build_instruction.txt
 
 TEST
- - Command line: ./merge_files InputDir OutFile [num_line_read_per_input_file]
-     (a) merge_files: executable
+ - Command line: ./bin/merge_txt_files InputDir OutFile [num_line_read_per_input_file]
+     (a) merge_txt_files: executable
      (b) InputDir: input files will be in this directory
      (c) OutFile: The program will merge all text files
                   and write in sorted order in this file.
